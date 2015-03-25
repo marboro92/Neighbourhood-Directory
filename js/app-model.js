@@ -82,11 +82,13 @@ var ViewModel = function() {
                   $('#place-list').animate({
                     scrollTop: i*190
                   },800);
+                  highlightList(i); 
                 }
               })(marker, i));
               google.maps.event.addListener(marker, 'dblclick', (function(marker, i) {
                 return function() {
                   markerFave(marker);
+                  highlightList(i);
                 }
               })(marker, i));
             }
@@ -103,7 +105,7 @@ var ViewModel = function() {
     var index = placeList.indexOf(clickedPlace);
 
     var clickedMarker = markers[index];
-
+    highlightList(index);
     markerChange(clickedMarker, index);
 
   }

@@ -63,7 +63,11 @@ html, body, #map-canvas {
 li {
   list-style: none;
   font-family: 'Lato', sans-serif;
-  width: 300px;
+  width: 345px;
+  height: 200px;
+  -webkit-box-sizing: border-box; /* Safari 3.0 - 5.0, Chrome 1 - 9, Android 2.1 - 3.x */
+  -moz-box-sizing: border-box;    /* Firefox 1 - 28 */
+  box-sizing: border-box;
   padding: 20px;
   color: #fff;
   font-size: 22px;
@@ -82,10 +86,10 @@ h2 {
   color: rgb(25, 205, 143);
 }
 p {
-  padding: 5px 20px;
-  font-size: 0.8em;
+  padding: 0 0 0 15px;
+  font-size: 0.7em;
   color: #666;
-  line-height: 0;
+  line-height: 0.5;
 
 }
 .menu-icon{
@@ -93,6 +97,12 @@ p {
   z-index: 100;
   top: 28px;
   left:25px;
+}
+.active {
+  border: 3px dashed #00D7A6;
+}
+.hidden {
+  visibility: hidden;
 }
 .autocomplete-suggestions { border: 1px solid #eee; background: #fff; cursor: pointer; overflow: auto; font-family:'Lato', sans-serif; }
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1.4em; white-space: nowrap; overflow: hidden; }

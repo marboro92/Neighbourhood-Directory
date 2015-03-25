@@ -50,6 +50,7 @@ var reset = function(){
 
 var menuIsOpen = function(){
   $('#place-list').addClass("open");
+  $('.menu-icon').removeClass("hidden");
   $('.menu-icon').attr('src', 'img/close.png');
   $('#place-list').show();
 };
@@ -58,4 +59,11 @@ var menuIsClosed = function(){
   $('#place-list').removeClass("open");
   $('.menu-icon').attr('src', 'img/menu.png');
   $('#place-list').hide();
+};
+
+var highlightList = function(i) {
+  var n = i + 1;
+  var selectedLi = 'li:nth-child(' + n + ')';
+  $('li').removeClass("active");
+  $(selectedLi).addClass("active");
 };
