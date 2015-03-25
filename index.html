@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+
+    <title>Places</title>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+    <script src="lib/knockout-3.2.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+       <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>
+    <script type="text/javascript" src="js/search-autocomplete.js"></script>
+
+
+  </head>
+  <body>
+
+    
+     <!--  <input id="where-input" class="controls" type="text" placeholder="City" data-bind="value: myCity">
+      <input id="where" type="button">Go</input> -->
+      <div class="searchBar" data-bind="enterkey: find">
+        <input id="pac-input" class="controls" type="text"  placeholder="Search For"/>
+        <button id="submit" type="button" data-bind=" click: find">Find</button>
+      </div>
+
+    <!-- <div id="menu"> -->
+      <ul data-bind="foreach: placeList" id="place-list">
+        <li>
+          <h2 data-bind="text: name, click: $parent.update"></h2>
+          <p data-bind="text: address"></p>
+          <p data-bind="text: phone"></p>
+          <p data-bind="text: crossStreet"></p>
+        </li>
+      </ul>
+    <!-- </div> -->
+    <div id="map-canvas"></div>
+    <script src="js/app-engine.js"></script>
+    <script src="js/app-model.js"></script>
+  </body>
+</html>

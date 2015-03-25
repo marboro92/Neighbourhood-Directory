@@ -1,0 +1,93 @@
+html, body, #map-canvas {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  font-size: 10px;
+}
+#map-canvas {
+  z-index:1;
+  top:0;
+  position: fixed;
+}
+#place-list {
+  min-width: 200px;
+  height: 100%;
+  right: 0;
+  position: absolute;
+  z-index: 2;
+  padding-left: 25px;
+  background: transparent;
+  overflow: scroll;
+
+}
+.searchBar {
+  position: absolute;
+  z-index: 99;
+  padding: 20px;
+}
+
+#pac-input {
+        background-color: #fff;
+        font-family: 'Lato', sans-serif;
+        border: 2px solid #84E0AA;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 8px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 260px;
+        height: 40px;
+        -webkit-transition: all 0.30s ease-in-out;
+        -moz-transition: all 0.30s ease-in-out;
+        -ms-transition: all 0.30s ease-in-out;
+        -o-transition: all 0.30s ease-in-out;
+
+}
+#pac-input:focus, #submit:focus, #pac-input:active, #submit:active {
+   box-shadow: 0 0 5px #84E0AA;;
+   border: 2px solid rgb(25, 226, 109);
+   outline: none;
+}
+#submit {
+  height: 44px;
+  font-size: 2em;
+  font-weight: 300;
+  margin-left:-5px;
+  border: 2px solid #84E0AA;
+  padding: 2px 5px;
+  color: #F3FCF5;
+  vertical-align: bottom;
+  background: rgb(23, 224, 155);
+}
+li {
+  list-style: none;
+  font-family: 'Lato', sans-serif;
+  width: 300px;
+  padding: 20px;
+  color: #fff;
+  font-size: 22px;
+  background: rgba(255,255,255,.8);
+}
+li:nth-child(odd) {
+  background: rgba(237, 245, 241, 0.9);
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+h2 {
+  font-size: 1.1em;
+  font-weight: 300;
+  color: rgb(25, 205, 143);
+}
+p {
+  padding: 5px 20px;
+  font-size: 0.8em;
+  color: #666;
+  line-height: 0;
+
+}
+.autocomplete-suggestions { border: 1px solid #eee; background: #fff; cursor: pointer; overflow: auto; font-family:'Lato', sans-serif; }
+.autocomplete-suggestion { padding: 10px 5px; font-size: 1.4em; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #f0f0f0; }
+.autocomplete-suggestions strong { font-weight: normal; color: rgb(23, 224, 155); }
