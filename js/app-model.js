@@ -68,7 +68,7 @@ var ViewModel = function() {
             for (var i = 0; i < fsData.length; i++) { 
               marker = new google.maps.Marker({
                 position: new google.maps.LatLng(fsData[i].location.lat, fsData[i].location.lng),
-                icon: 'img/place.png',
+                icon: pin,
                 map: MAP
               });
               //store the markers in an array for later
@@ -82,6 +82,11 @@ var ViewModel = function() {
                   $('#place-list').animate({
                     scrollTop: i*190
                   },800);
+                }
+              })(marker, i));
+              google.maps.event.addListener(marker, 'dblclick', (function(marker, i) {
+                return function() {
+                  markerFave(marker);
                 }
               })(marker, i));
             }

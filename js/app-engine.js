@@ -17,13 +17,23 @@ var youAreHere = new google.maps.Marker({
     position: myLocation,
     map: MAP
 });
+//different types of markers
+var pin = 'img/place.png';
+var visitedPin = 'img/placeg.png';
+var favePin = 'img/placep.png';
+
 // function for indicated which location has been clicked 
 var markerChange = function(marker, i) {
-    marker.setIcon('img/placeg.png');
+    if(marker.icon != favePin){
+      marker.setIcon(visitedPin);
+    };
     infowindow.setContent(fsData[i].name);
     infowindow.open(MAP, marker);
     marker.setAnimation(google.maps.Animation.BOUNCE);
           setTimeout(function(){ marker.setAnimation(null); }, 750);
+};
+var markerFave = function(marker) {
+                marker.setIcon(favePin);
 };
 //to clear the map of markers
 var clearPins = function() {
