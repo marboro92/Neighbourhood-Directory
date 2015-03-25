@@ -95,10 +95,14 @@ var ViewModel = function() {
           }else{
             alert("no results found");
           };
-    }).error(function() { alert("error"); });
-          
-       
-  };
+    }).error(function(e) { alert("error"); });
+  
+    var twitURL = '/twitter-proxy.php?url='+encodeURIComponent('statuses/user_timeline.json?screen_name=Udacity0&count=2');
+
+    $.getJSON(twitURL, function(data){
+            console.log(data);
+     });
+};
 
   //marker change function bound to li header
   self.update = function(clickedPlace) {
