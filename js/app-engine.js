@@ -37,3 +37,15 @@ var reset = function(){
   clearPins();
   placeList([]);
 };
+
+var menuIsOpen = function(){
+  $('#place-list').addClass("open");
+  $('.menu-icon').attr('src', 'img/close.png');
+  $('#place-list').show();
+};
+
+var menuIsClosed = function(){
+  $('#place-list').removeClass("open");
+  $('.menu-icon').attr('src', 'img/menu.png');
+  $('#place-list').hide();
+};

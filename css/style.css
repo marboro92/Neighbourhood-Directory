@@ -12,7 +12,7 @@ html, body, #map-canvas {
 #place-list {
   min-width: 200px;
   height: 100%;
-  right: 0;
+  top: 80px;
   position: absolute;
   z-index: 2;
   padding-left: 25px;
@@ -23,7 +23,8 @@ html, body, #map-canvas {
 .searchBar {
   position: absolute;
   z-index: 99;
-  padding: 20px;
+  padding: 18px;
+  left: 50px;
 }
 
 #pac-input {
@@ -35,7 +36,7 @@ html, body, #map-canvas {
         margin-left: 8px;
         padding: 0 11px 0 13px;
         text-overflow: ellipsis;
-        width: 260px;
+        width: 210px;
         height: 40px;
         -webkit-transition: all 0.30s ease-in-out;
         -moz-transition: all 0.30s ease-in-out;
@@ -86,6 +87,12 @@ p {
   color: #666;
   line-height: 0;
 
+}
+.menu-icon{
+  position: absolute;
+  z-index: 100;
+  top: 28px;
+  left:25px;
 }
 .autocomplete-suggestions { border: 1px solid #eee; background: #fff; cursor: pointer; overflow: auto; font-family:'Lato', sans-serif; }
 .autocomplete-suggestion { padding: 10px 5px; font-size: 1.4em; white-space: nowrap; overflow: hidden; }

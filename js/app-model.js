@@ -46,6 +46,16 @@ var ViewModel = function() {
               fsData = data.response.venues;
               //reset the map
               reset();
+              //change the menu icon
+              menuIsOpen();
+              $('.menu-icon').click(function(){
+                if(!$('#place-list').hasClass("open")){
+                  menuIsOpen();
+
+                }else{
+                  menuIsClosed();
+                };
+            });
             // put the data in ko.obs array as place objects
               fsData.forEach(function(placeItem){
                 placeList.push(new Place(placeItem) );
@@ -68,6 +78,7 @@ var ViewModel = function() {
                 return function() {
                   markerChange(marker,i);
                   //scroll to the place in the list
+                  menuIsOpen();
                   $('#place-list').animate({
                     scrollTop: i*190
                   },800);
