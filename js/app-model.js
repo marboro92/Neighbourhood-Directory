@@ -44,6 +44,7 @@ var ViewModel = function() {
           if (data.response.venues.length>0){
               //set fsData equal to the response 
               fsData = data.response.venues;
+              console.log(data);
               //reset the map
               reset();
               //change the menu icon
@@ -96,12 +97,6 @@ var ViewModel = function() {
             alert("no results found");
           };
     }).error(function(e) { alert("error"); });
-  
-    var twitURL = '/twitter-proxy.php?url='+encodeURIComponent('statuses/user_timeline.json?screen_name=Udacity0&count=2');
-
-    $.getJSON(twitURL, function(data){
-            console.log(data);
-     });
 };
 
   //marker change function bound to li header
