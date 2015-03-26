@@ -26,6 +26,7 @@ ko.bindingHandlers.enterkey = {
 //Place constructor for each location in JSON data
 var Place = function(data) {
   this.name = ko.observable(data.name);
+  this.category = ko.observable(data.categories[0].name);
   this.address = ko.observable(data.location.address);
   this.crossStreet = ko.observable(data.location.crossStreet);
   this.phone = ko.observable(data.contact.formattedPhone);
@@ -44,11 +45,12 @@ var ViewModel = function() {
           if (data.response.venues.length>0){
               //set fsData equal to the response 
               fsData = data.response.venues;
-              console.log(data);
+              //FOR DEBUG: console.log(fsdata);
               //reset the map
               reset();
               //change the menu icon
               menuIsOpen();
+              //add click handler for menu icon
               $('.menu-icon').click(function(){
                 if(!$('#place-list').hasClass("open")){
                   menuIsOpen();
@@ -56,7 +58,7 @@ var ViewModel = function() {
                 }else{
                   menuIsClosed();
                 };
-            });
+              });
             // put the data in ko.obs array as place objects
               fsData.forEach(function(placeItem){
                 placeList.push(new Place(placeItem) );
@@ -72,26 +74,28 @@ var ViewModel = function() {
                 icon: pin,
                 map: MAP
               });
+
               //store the markers in an array for later
               markers.push(marker);
+
               //add click event to the markers on the map
               google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
                   markerChange(marker,i);
-                  //scroll to the place in the list
                   menuIsOpen();
-                  $('#place-list').animate({
-                    scrollTop: i*190
-                  },800);
+                  scrollToLi('#place-list',i);
                   highlightList(i); 
                 }
               })(marker, i));
+
+              //dbl click to fave
               google.maps.event.addListener(marker, 'dblclick', (function(marker, i) {
                 return function() {
                   markerFave(marker);
                   highlightList(i);
                 }
               })(marker, i));
+
             }
           }else{
             alert("no results found");
@@ -101,11 +105,11 @@ var ViewModel = function() {
 
   //marker change function bound to li header
   self.update = function(clickedPlace) {
-    var index = placeList.indexOf(clickedPlace);
+    i = placeList.indexOf(clickedPlace);
+    var clickedMarker = markers[i];
 
-    var clickedMarker = markers[index];
-    highlightList(index);
-    markerChange(clickedMarker, index);
+    highlightList(i);
+    markerChange(clickedMarker, i);
 
   }
 };

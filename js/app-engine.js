@@ -17,17 +17,18 @@ var youAreHere = new google.maps.Marker({
     position: myLocation,
     map: MAP
 });
-//different types of markers
+//different types of MARKERS
 var pin = 'img/place.png';
 var visitedPin = 'img/placeg.png';
 var favePin = 'img/placep.png';
 
+//MARKER-CHANGING FUNCTIONS
 // function for indicated which location has been clicked 
-var markerChange = function(marker, i) {
+var markerChange = function(marker, index) {
     if(marker.icon != favePin){
       marker.setIcon(visitedPin);
     };
-    infowindow.setContent(fsData[i].name);
+    infowindow.setContent(fsData[index].name);
     infowindow.open(MAP, marker);
     marker.setAnimation(google.maps.Animation.BOUNCE);
           setTimeout(function(){ marker.setAnimation(null); }, 750);
@@ -35,19 +36,22 @@ var markerChange = function(marker, i) {
 var markerFave = function(marker) {
                 marker.setIcon(favePin);
 };
-//to clear the map of markers
+
+//CLEARING FUNCTIONS
+//to clear the map of markers to use in reset
 var clearPins = function() {
   for (var i = 0; i < markers.length; i++ ) {
     markers[i].setMap(null);
   }
   markers.length = 0;
 };
-//to cleaar pins and list 
+//to clear pins and list 
 var reset = function(){
   clearPins();
   placeList([]);
 };
 
+//FUNCTIONS TO OPEN CLOSE MENU 
 var menuIsOpen = function(){
   $('#place-list').addClass("open");
   $('.menu-icon').removeClass("hidden");
@@ -61,9 +65,17 @@ var menuIsClosed = function(){
   $('#place-list').hide();
 };
 
-var highlightList = function(i) {
-  var n = i + 1;
+//FUNCTION FOR LIST 
+//place border around  li corresponding to the location selected
+var highlightList = function(index) {
+  var n = index + 1;
   var selectedLi = 'li:nth-child(' + n + ')';
   $('li').removeClass("active");
   $(selectedLi).addClass("active");
+};
+//scroll to li the within a conatiner (add id of container)  corresponding to the location selected
+var scrollToLi = function(id, index) { 
+              $(id).animate({
+                    scrollTop: index*190
+                  },800);
 };
