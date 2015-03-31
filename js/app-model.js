@@ -1,5 +1,4 @@
-/* the enterkey extender from http://jsfiddle.net/jamietre/VTQQA/
-   ISSUE icons are blinking*/
+// the enterkey extender from http://jsfiddle.net/jamietre/VTQQA/
 
 ko.bindingHandlers.enterkey = {
     init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
@@ -13,7 +12,6 @@ ko.bindingHandlers.enterkey = {
                 }
 
                 var target = e.target;
-                target.blur();
 
                 allBindings.enterkey.call(ViewModel, ViewModel, target, element);
 
@@ -42,7 +40,7 @@ var ViewModel = function() {
       
     $.getJSON(URL, function(data) {
           //store the data
-          if (data.response.venues.length>0){
+          if (data.response.venues.length>0 && searchTerm.length>0){
               //set fsData equal to the response 
               fsData = data.response.venues;
               //FOR DEBUG: console.log(fsdata);
@@ -63,8 +61,6 @@ var ViewModel = function() {
               fsData.forEach(function(placeItem){
                 placeList.push(new Place(placeItem) );
               });
-            
-
         //Create markers for each place in fsData
             var marker, i;
 
@@ -82,7 +78,6 @@ var ViewModel = function() {
               google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
                   markerChange(marker,i);
-                  menuIsOpen();
                   scrollToLi('#place-list',i);
                   highlightList(i); 
                 }
@@ -95,11 +90,13 @@ var ViewModel = function() {
                   highlightList(i);
                 }
               })(marker, i));
-
             }
-          }else{
-            alert("no results found");
-          };
+
+          }else if (!searchTerm.length > 0) {
+            alert("Looks like the search box is empty.. Please type in something to search for and  then click 'find'.");
+          } else{
+            alert("No results were found, try searching for something less specific.");
+          }
     }).error(function(e) { alert("error"); });
 };
 

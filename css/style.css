@@ -10,44 +10,39 @@ html, body, #map-canvas {
   position: fixed;
 }
 #place-list {
-  min-width: 200px;
+  width: 325px;
   height: 100%;
   top: 80px;
   position: absolute;
   z-index: 2;
-  padding-left: 25px;
   background: transparent;
   overflow: scroll;
-
 }
 .searchBar {
   position: absolute;
   z-index: 99;
   padding: 18px;
-  left: 50px;
+  left: 20px;
 }
-
 #pac-input {
-        background-color: #fff;
-        font-family: 'Lato', sans-serif;
-        border: 2px solid #84E0AA;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 8px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 210px;
-        height: 40px;
-        -webkit-transition: all 0.30s ease-in-out;
-        -moz-transition: all 0.30s ease-in-out;
-        -ms-transition: all 0.30s ease-in-out;
-        -o-transition: all 0.30s ease-in-out;
-
+  background-color: #fff;
+  font-family: 'Lato', sans-serif;
+  border: 2px solid #84E0AA;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 180px;
+  height: 40px;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
 }
 #pac-input:focus, #submit:focus, #pac-input:active, #submit:active {
-   box-shadow: 0 0 5px #84E0AA;;
-   border: 2px solid rgb(25, 226, 109);
-   outline: none;
+  box-shadow: 0 0 5px #84E0AA;
+  border: 2px solid rgb(25, 226, 109);
+  outline: none;
 }
 #submit {
   height: 44px;
@@ -102,7 +97,9 @@ p {
   position: absolute;
   z-index: 100;
   top: 28px;
-  left:25px;
+  left: 5px;
+  width:30px;
+  height:auto;
 }
 .active {
   border: 3px dashed #00D7A6;
@@ -110,7 +107,27 @@ p {
 .hidden {
   visibility: hidden;
 }
-.autocomplete-suggestions { border: 1px solid #eee; background: #fff; cursor: pointer; overflow: auto; font-family:'Lato', sans-serif; }
-.autocomplete-suggestion { padding: 10px 5px; font-size: 1.4em; white-space: nowrap; overflow: hidden; }
-.autocomplete-selected { background: #f0f0f0; }
-.autocomplete-suggestions strong { font-weight: normal; color: rgb(23, 224, 155); }
+.autocomplete-suggestions {
+  border: 1px solid #eee;
+  background: #fff;
+  cursor: pointer;
+  overflow: auto;
+  font-family:'Lato', sans-serif;
+}
+.autocomplete-suggestion {
+  padding: 10px 5px;
+  font-size: 1.4em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.autocomplete-selected {
+  background: #f0f0f0;
+}
+.autocomplete-suggestions strong {
+  font-weight: normal;
+  color: rgb(23, 224, 155);
+}
+/*map infowindow styles*/
+.gm-style .gm-style-iw {
+  font-weight: 500;
+}

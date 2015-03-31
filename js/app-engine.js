@@ -9,9 +9,8 @@ var mapOptions = {
             center: myLocation,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             zoom: 15
-          };
+};
 var MAP = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-var infowindow = new google.maps.InfoWindow();
 // make a marker for mylocation
 var youAreHere = new google.maps.Marker({
     position: myLocation,
@@ -25,13 +24,18 @@ var favePin = 'img/placep.png';
 //MARKER-CHANGING FUNCTIONS
 // function for indicated which location has been clicked 
 var markerChange = function(marker, index) {
-    if(marker.icon != favePin){
+  var infowindow = new google.maps.InfoWindow();
+  var content = '<h2>'+fsData[index].name+'</h2>'+
+                '<h5>'+fsData[index].categories[0].name+'</h5>'+
+                '<p>'+fsData[index].contact.formattedPhone+'</p>'+
+                '<p>'+fsData[index].location.address+'</p>';
+  if(marker.icon != favePin){
       marker.setIcon(visitedPin);
-    };
-    infowindow.setContent(fsData[index].name);
-    infowindow.open(MAP, marker);
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-          setTimeout(function(){ marker.setAnimation(null); }, 750);
+  };
+  infowindow.setContent(content);
+  infowindow.open(MAP, marker);
+  marker.setAnimation(google.maps.Animation.BOUNCE);
+  setTimeout(function(){ marker.setAnimation(null); }, 750);
 };
 var markerFave = function(marker) {
                 marker.setIcon(favePin);
